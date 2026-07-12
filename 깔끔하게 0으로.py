@@ -2,10 +2,12 @@ import traceback
 import numpy as np
 from scipy.integrate import quad
 from scipy.special import gamma, jv, zeta
+import fuckit
 
 # ★ NumPy 연산 중 0으로 나누는 경고가 발생하면 에러(Exception)를 던지도록 설정
 np.seterr(divide='raise') 
 
+@fuckit
 def calculate_latex_expression(n_max: int = 1000, k_max: int = 1000) -> float:
     try:
         # (기존 계산 로직 동일)
@@ -21,7 +23,6 @@ def calculate_latex_expression(n_max: int = 1000, k_max: int = 1000) -> float:
         return numerator / denominator
     
     except Exception:
-        print("❌ 에러가 발생하여 계산에 실패했습니다. 상세 트레이스백:")
         traceback.print_exc()
         raise
 
